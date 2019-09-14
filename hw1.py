@@ -1,22 +1,14 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('/Users/yogeshverma/Documents/Fall 19/AML/Homework 1/digit-recognizer/train.csv')
+df = pd.read_csv('train.csv')
 
 number_pixel_dict = {}
 pixels = df.iloc[ : , 1:]
 labels = df.iloc[ : , 0]
 dataset = df.values
 
-#
 for index_label in range(0,len(dataset)):
     if dataset[index_label][0] not in number_pixel_dict.keys():
         number_pixel_dict[dataset[index_label][0]]= {'count':1,'number_array':dataset[index_label][1:]}
