@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('train.csv')
+df = pd.read_csv('/Users/yogeshverma/Documents/Fall 19/AML/Homework 1/digit-recognizer/train.csv')
 
 number_pixel_dict = {}
 pixels = df.iloc[ : , 1:]
@@ -19,12 +19,13 @@ for index_label in range(0,len(dataset)):
 total_prob=0
 for label in range(0,10):
     pixel_array = np.array(number_pixel_dict[label]['number_array'], dtype = 'uint8').reshape((28,28))
+    prior_prob = (number_pixel_dict[label]['count'])/42000.0
+    number_pixel_dict[label]['prior_prob']=prior_prob  
     #plt.title('Label is {Label}'.format(Label = labels))
     plt.imshow(pixel_array, cmap = 'gray')
     plt.show()
 
 for label in range(0,10):
-    prior_prob = (number_pixel_dict[label]['count'])/42000.0
-    print("Prior Probability for" , label, "is ", prior_prob)
+    print("Prior Probability for" , label, "is ", number_pixel_dict[label]['prior_prob'])
 
 
