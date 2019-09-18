@@ -21,7 +21,7 @@ for label in range(0,10):
     pixel_array = np.array(number_pixel_dict[label]['number_array'], dtype = 'uint8').reshape((28,28))
     prior_prob = (number_pixel_dict[label]['count'])/42000.0
     number_pixel_dict[label]['prior_prob']=prior_prob  
-    #plt.title('Label is {Label}'.format(Label = labels))
+    plt.title('Label is {Label}'.format(Label = labels))
     plt.imshow(pixel_array, cmap = 'gray')
     plt.show()
 
