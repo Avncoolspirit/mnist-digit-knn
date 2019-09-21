@@ -23,8 +23,7 @@ def calculate_l2_norm(tile_matrix, dataset_numpy):
     euclidean_distances = pd.DataFrame(distance_squared)
     euclidean_distances = euclidean_distances[euclidean_distances > .01].min(axis=1)
     min_index = euclidean_distances.idxmin(axis=0, skipna=True)
-    
-    return pixels_0_1_labels.iloc[min_index]
+    return min_index
 
 for index_label in range(0,len(dataset)):
     if dataset[index_label][0] not in number_pixel_dict.keys():
@@ -55,7 +54,7 @@ for index in range(0, len(pixels_0_1_labels)):
     print(index)
     tile_matrix = np.tile(pixels_0_1_px.iloc[ index , : ],(pixels_0_1_size,1))
     min_index = calculate_l2_norm(tile_matrix, pixels_0_1_px)
-    print("Nearest neighbour for index: " , index, "is ", min_index)
+    print("Nearest neighbour for index: " , index, "is ", pixels_0_1_labels.iloc[min_index])
         
     
 
